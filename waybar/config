@@ -1,0 +1,60 @@
+{
+    "pressed": 1,
+    "height": 47,
+    "modules-left": ["wlr/workspaces","hyprland/window"],
+    "modules-center":["custom/space"],
+    "modules-right": ["custom/waybar-mpris","pulseaudio", "cpu", "memory","battery","custom/clock"], 
+    "custom/clock": {
+        "exec": "/home/felix/.config/waybar/scripts/clock.sh",
+	"on-click": "/home/felix/.config/waybar/scripts/toggle.sh"
+    },
+    "custom/space":{
+        "format": "             "
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "hyprland/window":{
+        "max-lenght": 10
+    },
+    "custom/waybar-mpris": {
+        "exec": "/home/felix/.config/waybar/scripts/music.sh",
+        "on-click": "waybar-mpris --send toggle",
+        "on-click-right": "waybar-mpris --send player-next",
+        "escape": true
+    },    
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon} ",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
+        "format-alt": "{time} {icon} ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "wlr/workspaces": {
+     "format": "{icon}",
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1",
+     "on-click": "activate"
+    }
+}

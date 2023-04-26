@@ -1,0 +1,97 @@
+* {
+  all: unset;
+}
+
+.calouterbox {
+  background-color: rgb(92, 91, 91);
+}
+.pfpface {
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+.welcometxt {
+  margin-top: 5px;
+  font-size: 30px;
+}
+.pfpapps {
+  font-size:35px;
+  padding-left: 10px;
+  min-width: 50px;
+  margin-top: 20px;
+}
+.launcher-btn {
+  background-color: red;
+  padding: 0 12px 0 12px;
+  border-radius: 5px;
+}
+.launcher-btn:hover {
+  background-color: blue;
+}
+.pfpapps:hover {
+  font-size: 50px;
+}
+.scale-cpu,.scale-fs,.scale-ram {
+  padding: 5px 0 5px 0 ;
+  background-color: rgb(79, 79, 151);
+}
+.stats-icon-cpu,.stats-icon-fs,.stats-icon-ram {
+  background-color: rgb(79, 79, 151);
+  margin-left: 5px;
+  padding-left: 5;
+}
+.scale-cpu {
+  border-top-right-radius: 7px;
+}
+.scale-fs {
+  border-bottom-right-radius: 7px;
+}
+/*---------------------------------*/
+
+.scale-cpu trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.scale-cpu trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 20px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+/*---------------------------------*/
+.scale-ram trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.scale-ram trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 20px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+/*---------------------------------*/
+.scale-fs trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.scale-fs trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 20px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}

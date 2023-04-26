@@ -1,0 +1,26 @@
+
+(defwidget light []
+  (box :orientation "h" :halign "center"
+  (metric2 :label "Backlight"
+          :value "backlight"
+          :onchange "brightnessctl s {}%"))
+)
+
+(defwidget metric2 [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box  :class "label" label)
+    (scale :min 1
+           :max 100
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwindow light :monitor 0
+  :geometry (geometry :x "2%"
+                      :y "2%"
+                      :height "550px"
+                      :width "350px")
+(light)
+)

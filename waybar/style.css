@@ -1,0 +1,176 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Iosevka Term Nerd Font";
+    font-size: 15px;
+    min-height: 43px;
+}
+
+window#waybar {
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 0px solid rgba(0, 0, 0 , 0.0);
+    color: #ff7518;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#custom-space {
+    min-width: 200px;
+}
+
+#workspaces button {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background-color: #414141;
+
+
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+}
+
+#workspaces button.active {
+    background-image: linear-gradient(-45deg, #CBA6F7 0%, #A72235 100%);
+    color: #000000;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ff7518;
+}
+
+#battery,
+#cpu,
+#memory,
+#backlight,
+#custom-network,
+#pulseaudio,
+#mode {
+    border-radius: 20px;
+    border-width: 2px;
+    padding: 0px 39px;
+    margin: 2 -16px;
+    color: #ff7518;
+}
+
+#pulseaudio {
+    padding-right: 50px;
+}
+
+#battery {
+    padding-right: 50px;
+}
+
+#custom-clock {
+    border-radius: 20px;
+    border-width: 2px;
+    padding: 0px 15px;
+    margin: 2 16px;
+    color: #ff7518;
+}
+
+
+#window,
+#workspaces {
+    margin: 0 0px;
+}
+
+#custom-waybar-mpris {
+    margin: 2 0px;
+    margin-right: 350px;
+    border-radius: 20px;
+}
+
+#window {
+    border-radius: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#custom-waybar-mpris,
+#window {
+
+	color: #ff7518;
+	padding: 0 20px ;
+	background-image: linear-gradient(75deg, #241F31 0%, #A72235 100%);
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #e5e9f0;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #bf616a;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+#battery {
+    background: #2f2f2f;
+}
+
+#custom-clock {
+    background: #464545;
+    margin: 0 -1px;
+    margin-left: -22px;
+}
+
+#cpu {
+    background: #2f2f2f;
+}
+
+#memory {
+    background: #2f2f2f;
+}
+
+#backlight {
+    background-image: linear-gradient(75deg, #241F31 0%, #A72235 100%);
+}
+
+#custom-network {
+    background-image: linear-gradient(75deg, #241F31 0%, #A72235 100%);
+}
+
+#custom-network.disconnected {
+    background-image: linear-gradient(75deg, #241F31 0%, #A72235 100%);
+}
+
+#pulseaudio {
+    background: #1b1b1b;
+}
+
+#pulseaudio.muted {
+    background: #1b1b1b;
+}

@@ -1,0 +1,82 @@
+(defvar pfpimage "../assets/profile.png")
+(defpoll iam :interval "6h" `whoami`)
+(defpoll up :interval "6h" `uptime -p`)
+
+(defpoll hour :interval "1s" `date +%H`)
+(defpoll minute :interval "1m" `date +%M`)
+(defpoll fulldate :interval "24h" "date '+%A, %d %B'")
+
+;; User info Widget ;;
+(defwidget pfp [] 
+  (box :orientation "h" :class "pfpbox" :space-evenly false
+    (box :orientation "v" :height 100 :class "profilebox" :hexpand true :space-evenly false
+      (box :orientation "h" :class "pfpboxtop" :space-evenly false
+          (box :class "pfpface" :valign "start" :hexpand true
+			(image :path "${pfpimage}" :image-width 75 :image-height 75))
+        
+      (box :orientation "v" :class "pfpboxbot" :space-evenly false
+          (box :class "welcometxt" :halign "start" :valign "center" "${iam}")
+          (box :class "welcomeup" :halign "start" :valign "center" "${up}")
+          (box :class "pfpapps" :halign "right" :valign "center" :hexpand true :spacing 20
+			         (button :class "launcher-btn"
+                       :onclick "firefox"
+                       :tooltip "Browser"
+                       "󰇧")
+               (button :class "launcher-btn"
+                       :onclick "nautilus"
+                       :tooltip "File Manager"
+                       "")
+               (button :class "launcher-btn"
+                       :onclick "kitty"
+                       :tooltip "Terminal"
+                       "")
+               (button :class "launcher-btn"
+                       :onclick "code"
+                       :tooltip "Editor"
+                       ""))
+        ))
+  )
+
+  )
+  
+)
+
+;; System info Widget ;;
+(defwidget sysinfo[] 
+  (box :orientation "h" :class "sysfullbox" :space-evenly false
+	(box :orientation "v" :height 100 :class "sysbox" :hexpand true :space-evenly false
+      (box :orientation "v" :class "systop" :space-evenly false :spacing 0 
+        (box :class "stats" :hexpand "false" :vexpand "false" :space-evenly "false"
+		  (label :tooltip "${round(EWW_CPU.avg, 0)}%" :class "stats-icon-cpu" :text "")
+		  (scale :min 0 :max 101 :active false :value {EWW_CPU.avg} :class "scale-cpu" :width 150)
+		)
+		(box :class "stats" :hexpand "false" :vexpand "false" :space-evenly "false"
+		  (label :tooltip "${round(EWW_RAM.used_mem_perc, 0)}%" :class "stats-icon-ram" :text "﬙")
+		  (scale :min 0 :max 101 :active false :value {EWW_RAM.used_mem_perc} :class "scale-ram" :width 150)
+		)
+		(box :class "stats" :hexpand "false" :vexpand "false" :space-evenly "false"
+		  (label :tooltip "${round(EWW_DISK["/"].used_perc, 0)}%" :class "stats-icon-fs" :text "")
+		  (scale :min 0 :max 101 :active false :value {(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100} :class "scale-fs" :width 150)
+		)
+	  )
+    )
+  )
+)
+
+;; Panel Widget ;;
+(defwidget ipanel[]
+  (box :orientation "v" :width 360 :space-evenly false :class "calouterbox"
+    ;;(sysinfo)
+        (pfp)
+  )
+)
+  
+;; ** Windows ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  (defwindow dashboard
+  :monitor 0
+  :geometry (geometry :x "5%" 
+					  :y "0px"
+					  :anchor "left top")
+					  :stacking "fg"
+(ipanel))
